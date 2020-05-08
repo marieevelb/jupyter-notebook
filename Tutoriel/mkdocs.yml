@@ -1,0 +1,7 @@
+site_name: Test tutoriel
+
+nav:
+- Tutoriel: Arthur.ipynb
+
+plugins:
+  - mkdocs-jupyter
