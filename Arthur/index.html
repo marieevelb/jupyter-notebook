@@ -70,8 +70,20 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#tutoriel-utiliser-les-donnees-ouvertes-du-service-meteorologique-du-canada-pour-laide-a-la-decision" class="nav-link">Tutoriel : utiliser les données ouvertes du Service météorologique du Canada pour l'aide à la décision</a>
+            <li class="nav-item" data-level="1"><a href="#cas-dutilisation-utiliser-les-donnees-ouvertes-du-service-meteorologique-du-canada-pour-laide-a-la-decision" class="nav-link">Cas d'utilisation : utiliser les données ouvertes du Service météorologique du Canada pour l'aide à la décision</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#sommaire" class="nav-link">Sommaire</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#creation-dun-outil-daide-a-la-decision" class="nav-link">Création d'un outil d'aide à la décision</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#conclusion" class="nav-link">Conclusion</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -6227,10 +6239,14 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="tutoriel-utiliser-les-donnees-ouvertes-du-service-meteorologique-du-canada-pour-laide-a-la-decision">Tutoriel : utiliser les donn&#233;es ouvertes du Service m&#233;t&#233;orologique du Canada pour l'aide &#224; la d&#233;cision<a class="anchor-link" href="#Tutoriel-:-utiliser-les-donn&#233;es-ouvertes-du-Service-m&#233;t&#233;orologique-du-Canada-pour-l'aide-&#224;-la-d&#233;cision">&#182;</a></h1><p>Les données du Service météorologique du Canada peuvent aisément être intégrées à des outils d'aide à la décision afin de faciliter la prise de décisions critiques. Ce tutoriel vous montrera comment extraire et traiter les données météorologiques brutes à l'aide du langage de programmation <a href="https://www.python.org/">Python</a> afin de créer un outil d'aide à la décision basé sur la notion du rapport coût-perte.</p>
-<p>Prenons la situation suivante: un propriétaire de crèmerie nommé Arthur souhaite planifier le nombre d'employés qu'il y aura chaque jour à la crèmerie à l'aide des prévisions du Service météorologique du Canada. En effet, comme les journées chaudes de l'été amènent beaucoup plus de clients que les journées plus froides, il souhaite utiliser un outil d'aide à la décision afin de déterminer quel nombre d'employés lui permettra de maximiser ses profits chaque jour. Selon ses calculs, la crèmerie accueille 300 clients en moyenne les journées où la température est de 25°C ou plus alors qu'elle en accueille seulement 150 les journées où la température est inférieure à 25°C. La crèmerie ne nécessite normalement qu'un seul employé, mais un deuxième est nécessaire pour réussir à servir l'ensemble des clients lorsqu'il y a plus de 200 clients dans une journée.</p>
-<p>Afin de déterminer le nombre d'employés à mettre à l'horaire, Arthur va comparer la probabilité que la température soit égale ou supérieure à 25°C au rapport coût-perte de faire travailler un deuxième employé. Pour ce faire, la première étape est d'effectuer une requête avec le <a href="https://eccc-msc.github.io/open-data/msc-geomet/web-services_fr/#web-map-service-wms">standard Web Map Service (WMS)</a> du Service météorologique du Canada afin d'obtenir la probabilité que la température soit de 25°C ou plus pour l'heure, la date et le lieu désiré à l'aide du langage de programmation Python. Pour réaliser cette étape, il faut tout d'abord importer les modules Python nécessaires à ce tutoriel et déterminer les paramètres de la requête comme la couche de données désirée, le lieu et les informations nécessaires pour obtenir la date et l'heure de chaque prédiction disponible.</p>
-<p>La couche qui sera utilisée est <a href="https://eccc-msc.github.io/open-data/msc-data/nwp_reps/readme_reps_fr/">REPS.DIAG.24_T8.ERGE25</a>. Celle-ci contient comme données la probabilité en pourcentage que la température maximale soit égale ou supérieure à 25°C. La période pour laquelle les prédictions sont disponibles et le pas de temps entre les prédictions a été obtenu en consultant les métadonnées de la couche à l'aide de la requête GetCapabilities suivante: <a href="https://geo.weather.gc.ca/geomet?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities&amp;LAYERS=REPS.DIAG.24_T8.ERGE25">https://geo.weather.gc.ca/geomet?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities&amp;LAYERS=REPS.DIAG.24_T8.ERGE25</a>.</p>
+<p><a href="https://marieevelb.github.io/jupyter-notebook/Arthur/">In English</a><br>
+&nbsp;</p>
+<p><img src="https://eccc-msc.github.io/open-data/img_eccc-logo.png" alt="ECCC logo"> &nbsp;</p>
+<p><a href="https://eccc-msc.github.io/open-data/readme_fr/">TdM</a> &gt; <a href="https://eccc-msc.github.io/open-data/usage/readme_fr/">Aperçu de l'utilisation</a> &gt; Outil d'aide à la décision en Python</p>
+<h1 id="cas-dutilisation-utiliser-les-donnees-ouvertes-du-service-meteorologique-du-canada-pour-laide-a-la-decision">Cas d'utilisation : utiliser les donn&#233;es ouvertes du Service m&#233;t&#233;orologique du Canada pour l'aide &#224; la d&#233;cision<a class="anchor-link" href="#Cas-d'utilisation-:-utiliser-les-donn&#233;es-ouvertes-du-Service-m&#233;t&#233;orologique-du-Canada-pour-l'aide-&#224;-la-d&#233;cision">&#182;</a></h1><h2 id="sommaire">Sommaire<a class="anchor-link" href="#Sommaire">&#182;</a></h2><p>Les données des services web géospatiaux <a href="https://eccc-msc.github.io/open-data/msc-geomet/readme_fr/">GeoMet du Service météorologique du Canada</a> peuvent aisément être intégrées à des outils d'aide à la décision afin de faciliter la prise de décisions critiques. Cet exemple de cas d'utilisation vous montrera comment extraire et traiter les données météorologiques brutes à l'aide du langage de programmation <a href="https://www.python.org/">Python</a> afin de créer un outil d'aide à la décision basé sur la notion du rapport coût-perte.</p>
+<h2 id="creation-dun-outil-daide-a-la-decision">Cr&#233;ation d'un outil d'aide &#224; la d&#233;cision<a class="anchor-link" href="#Cr&#233;ation-d'un-outil-d'aide-&#224;-la-d&#233;cision">&#182;</a></h2><p>Prenons la situation suivante: un propriétaire de crèmerie nommé Arthur souhaite planifier le nombre d'employés qu'il y aura chaque jour à la crèmerie à l'aide des prévisions du Service météorologique du Canada. En effet, comme les journées chaudes de l'été amènent beaucoup plus de clients que les journées plus froides, il souhaite utiliser un outil d'aide à la décision afin de déterminer quel nombre d'employés lui permettra de maximiser ses profits chaque jour. Selon ses calculs, la crèmerie accueille 300 clients en moyenne les journées où la température est de 25°C ou plus alors qu'elle en accueille seulement 150 les journées où la température est inférieure à 25°C. La crèmerie ne nécessite normalement qu'un seul employé, mais un deuxième est nécessaire pour réussir à servir l'ensemble des clients lorsqu'il y a plus de 200 clients dans une journée.</p>
+<p>Afin de déterminer le nombre d'employés à mettre à l'horaire, Arthur va comparer la probabilité que la température soit égale ou supérieure à 25°C au rapport coût-perte de faire travailler un deuxième employé. Pour ce faire, la première étape est d'effectuer une requête avec le <a href="https://eccc-msc.github.io/open-data/msc-geomet/web-services_fr/#web-map-service-wms">standard Web Map Service (WMS)</a> du Service météorologique du Canada afin d'obtenir la probabilité que la température soit de 25°C ou plus pour l'heure, la date et le lieu désiré à l'aide du langage de programmation Python. Pour réaliser cette étape, il faut tout d'abord importer les modules Python nécessaires et déterminer les paramètres de la requête comme la couche de données désirée, le lieu et les informations nécessaires pour obtenir la date et l'heure de chaque prédiction disponible.</p>
+<p>La couche qui sera utilisée est celle du <a href="https://eccc-msc.github.io/open-data/msc-data/nwp_reps/readme_reps_fr/">Système régional de prévision d'ensemble (SRPE)</a> qui contient la probabilité en pourcentage que la température maximale soit égale ou supérieure à 25°C (<code>REPS.DIAG.24_T8.ERGE25</code>). La période pour laquelle les prédictions sont disponibles et le pas de temps entre les prédictions a été obtenu en consultant les métadonnées de la couche à l'aide de la requête GetCapabilities suivante: <a href="https://geo.weather.gc.ca/geomet?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities&amp;LAYERS=REPS.DIAG.24_T8.ERGE25">https://geo.weather.gc.ca/geomet?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities&amp;LAYERS=REPS.DIAG.24_T8.ERGE25</a>.</p>
 
 </div>
 </div>
@@ -6243,23 +6259,21 @@ h6:hover .anchor-link {
         
         
         <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># Installation de OWSlib si pas déjà installé</span>
-<span class="c1"># pip install OWSLib # Utiliser cette ligne si vous utilisez pip comme gestionnaire de packages Python</span>
-<span class="c1"># conda install -c conda-forge owslib # Utiliser cette ligne si vous utilisez conda comme gestionnaire de packages Python</span>
-
-<span class="c1"># Importation des modules Python </span>
-<span class="kn">from</span> <span class="nn">owslib.wms</span> <span class="kn">import</span> <span class="n">WebMapService</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># Importation des modules Python </span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">owslib.wms</span> <span class="kn">import</span> <span class="n">WebMapService</span>
 
 <span class="c1"># Choix des paramètres</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="s1">&#39;REPS.DIAG.24_T8.ERGE25&#39;</span>  <span class="c1"># Couche de données désirée</span>
-<span class="n">y</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="mf">43.555</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.55</span>  <span class="c1"># Coordonnées de l&#39;endroit pour lequel on souhaite obtenir des prévisions</span>
-<span class="n">timezone</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span> <span class="c1"># Fuseau horaire local. Dans cet exemple, le fuseau horaire est UTC-04:00</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">43.555</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.55</span>  <span class="c1"># Coordonnées de l&#39;endroit pour lequel on souhaite obtenir des prévisions</span>
+<span class="n">time_zone</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span> <span class="c1"># Fuseau horaire local. Dans cet exemple, le fuseau horaire est UTC-04:00</span>
 <span class="n">interval</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># Pas de temps entre les prédictions</span>
-<span class="n">totaltime</span> <span class="o">=</span> <span class="mi">48</span> <span class="c1"># Nombre d&#39;heures total de la période de prédiction</span>
-<span class="c1">#starttime = &#39;AAAA-MM-JJ HH:00:00&#39; # Si date et heure locale de départ spécifique, utiliser cette variable en enlevant le # et en remplaçant les lettres en majuscule par les bonnes valeurs</span>
+<span class="n">total_time</span> <span class="o">=</span> <span class="mi">48</span> <span class="c1"># Nombre d&#39;heures total de la période de prédiction</span>
+<span class="c1"># start_time = &#39;AAAA-MM-JJ HH:00:00&#39; </span>
+<span class="c1"># Si date et heure locale de départ spécifique, utiliser start_timee en enlevant le # </span>
+<span class="c1"># et en remplaçant les lettres en majuscule par les bonnes valeurs</span>
 </pre></div>
 
         </div>
@@ -6286,10 +6300,10 @@ h6:hover .anchor-link {
         <div class="input_area">
             <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">now</span> <span class="o">&lt;</span> <span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="n">time</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="k">if</span> <span class="n">now</span> <span class="o">&lt;</span> <span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">minute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">minute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)]</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">time</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">minute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)]</span>
 </pre></div>
 
         </div>
@@ -6301,7 +6315,7 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Si l'on souhaite obtenir des prédictions à des dates et des heures locales spécifiques au lieu de toutes les prédictions disponibles, il faut accorder une valeur à la variable starttime dans les paramètres de la requête et enlever le # qui précède la ligne de code suivante. Dans notre exemple, Arthur souhaite obtenir toutes les prédictions disponibles, donc cette ligne de code n'est pas nécessaire.</p>
+<p>Si l'on souhaite obtenir des prédictions à des dates et des heures locales spécifiques au lieu de toutes les prédictions disponibles, il faut accorder une valeur à la variable <code>start_time</code> dans les paramètres de la requête et enlever le <code>#</code> qui précède la ligne de code suivante. Dans notre exemple, Arthur souhaite obtenir toutes les prédictions disponibles, donc cette ligne de code n'est pas nécessaire.</p>
 
 </div>
 </div>
@@ -6314,7 +6328,7 @@ h6:hover .anchor-link {
         
         
         <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># time = [datetime.strptime(starttime, &#39;%Y-%m-%d %H:%M:%S&#39;) + timedelta(hours=0-timezone)]</span>
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># time = [datetime.strptime(start_time, &#39;%Y-%m-%d %H:%M:%S&#39;) + timedelta(hours = 0 - time_zone)]</span>
 </pre></div>
 
         </div>
@@ -6326,7 +6340,7 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Maintenant que l'heure de la première prédiction a été déterminée, la portion de code suivante va permettre de calculer la date et l'heure de chaque prédiction désirée ainsi que le paramètre bbox de la requête (portion du territoire visée par la requête).</p>
+<p>Maintenant que l'heure de la première prédiction a été déterminée, la portion de code suivante va permettre de calculer la date et l'heure de chaque prédiction désirée ainsi que le paramètre <code>bbox</code> de la requête (lieu visé par la requête).</p>
 
 </div>
 </div>
@@ -6340,11 +6354,11 @@ h6:hover .anchor-link {
         
         <div class="input_area">
             <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># Calcul de la date et l&#39;heure de chaque prédiction</span>
-<span class="k">while</span> <span class="n">time</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">totaltime</span><span class="p">)):</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">interval</span><span class="p">))</span>
+<span class="k">while</span> <span class="n">time</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span> <span class="o">=</span> <span class="n">total_time</span><span class="p">)):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span> <span class="o">=</span> <span class="n">interval</span><span class="p">))</span>
     
 <span class="c1"># Calcul du paramètre bbox</span>
-<span class="n">minx</span><span class="p">,</span><span class="n">miny</span><span class="p">,</span><span class="n">maxx</span><span class="p">,</span><span class="n">maxy</span> <span class="o">=</span> <span class="n">x</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="mf">0.25</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="mf">0.25</span>
+<span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.25</span>
 </pre></div>
 
         </div>
@@ -6370,29 +6384,30 @@ h6:hover .anchor-link {
         
         <div class="input_area">
             <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># Connexion au WMS</span>
-<span class="n">wms</span> <span class="o">=</span> <span class="n">WebMapService</span><span class="p">(</span><span class="s1">&#39;https://geo.weather.gc.ca/geomet?SERVICE=WMS&amp;REQUEST=GetCapabilities&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.3.0&#39;</span><span class="p">)</span>
+<span class="n">wms</span> <span class="o">=</span> <span class="n">WebMapService</span><span class="p">(</span><span class="s1">&#39;https://geo.weather.gc.ca/geomet?SERVICE=WMS&amp;REQUEST=GetCapabilities&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;1.3.0&#39;</span><span class="p">)</span>
 
 <span class="c1"># Boucle pour effectuer les requêtes et extraire les probabilités</span>
 <span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">pixel_value</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-    <span class="n">info</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wms</span><span class="o">.</span><span class="n">getfeatureinfo</span><span class="p">(</span><span class="n">layers</span><span class="o">=</span><span class="p">[</span><span class="n">layer</span><span class="p">],</span>
-                       <span class="n">srs</span><span class="o">=</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span>
-                       <span class="n">bbox</span><span class="o">=</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span><span class="p">),</span>
-                       <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
-                       <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;image/jpeg&#39;</span><span class="p">,</span>
-                       <span class="n">query_layers</span><span class="o">=</span><span class="p">[</span><span class="n">layer</span><span class="p">],</span>
-                       <span class="n">info_format</span><span class="o">=</span><span class="s1">&#39;text/plain&#39;</span><span class="p">,</span>
-                       <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-                       <span class="n">feature_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                       <span class="n">time</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;Z&#39;</span>
+<span class="n">prediction_index</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Position de la prédiction dans la liste time</span>
+<span class="k">while</span> <span class="n">prediction_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+    <span class="n">info</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wms</span><span class="o">.</span><span class="n">getfeatureinfo</span><span class="p">(</span><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="p">],</span>
+                       <span class="n">srs</span> <span class="o">=</span> <span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span>
+                       <span class="n">bbox</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">),</span>
+                       <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+                       <span class="nb">format</span> <span class="o">=</span> <span class="s1">&#39;image/jpeg&#39;</span><span class="p">,</span>
+                       <span class="n">query_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="p">],</span>
+                       <span class="n">info_format</span> <span class="o">=</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">,</span>
+                       <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+                       <span class="n">feature_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                       <span class="n">time</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">prediction_index</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;Z&#39;</span>
                        <span class="p">))</span>
     <span class="c1"># Extraction des probabilités</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="n">prediction_index</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
     <span class="n">pixel_value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;value_0\s=\s\W\W*\d*.*\d+&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;[&quot;&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pour la date et l</span><span class="se">\&#39;</span><span class="s1">heure </span><span class="si">{</span><span class="n">time</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y %H:%M:%S&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">, la probabilité que t°&gt;=25°C est de </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">pixel_value</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="si">}</span><span class="s1">%.&#39;</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pour la date et l</span><span class="se">\&#39;</span><span class="s1">heure </span><span class="si">{</span><span class="n">time</span><span class="p">[</span><span class="n">prediction_index</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y %H:%M:%S&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">,&#39;</span> <span class="o">+</span>
+        <span class="sa">f</span><span class="s1">&#39; la probabilité que t°&gt;=25°C est de </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">pixel_value</span><span class="p">[</span><span class="n">prediction_index</span><span class="p">])</span><span class="si">}</span><span class="s1">%.&#39;</span><span class="p">)</span>
+    <span class="n">prediction_index</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
         </div>
@@ -6410,11 +6425,11 @@ h6:hover .anchor-link {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Pour la date et l&#39;heure 05/09/2020 12:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
-Pour la date et l&#39;heure 05/10/2020 00:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
-Pour la date et l&#39;heure 05/10/2020 12:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
-Pour la date et l&#39;heure 05/11/2020 00:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
-Pour la date et l&#39;heure 05/11/2020 12:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
+<pre>Pour la date et l&#39;heure 05/12/2020 12:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
+Pour la date et l&#39;heure 05/13/2020 00:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
+Pour la date et l&#39;heure 05/13/2020 12:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
+Pour la date et l&#39;heure 05/14/2020 00:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
+Pour la date et l&#39;heure 05/14/2020 12:00:00, la probabilité que t°&gt;=25°C est de 0.0%.
 </pre>
 </div>
 </div>
@@ -6447,15 +6462,15 @@ Pour la date et l&#39;heure 05/11/2020 12:00:00, la probabilité que t°&gt;=25�
 <span class="n">hours_per_day</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1"># Les enployés travaillent 8h par jour</span>
 
 <span class="c1"># Coût pour ajouter un deuxième employé pendant une journée</span>
-<span class="n">cost</span> <span class="o">=</span> <span class="n">hours_per_day</span><span class="o">*</span><span class="n">salary</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="n">hours_per_day</span> <span class="o">*</span> <span class="n">salary</span>
 
 <span class="c1"># Profits perdus si un seul employé est présent une journée où la température est supérieure à 25°C</span>
-<span class="n">losses</span> <span class="o">=</span> <span class="p">(</span><span class="n">clients_above25</span><span class="o">-</span><span class="n">clients_served</span><span class="p">)</span><span class="o">*</span><span class="n">profit_per_client</span>
+<span class="n">losses</span> <span class="o">=</span> <span class="p">(</span><span class="n">clients_above25</span><span class="o">-</span><span class="n">clients_served</span><span class="p">)</span> <span class="o">*</span> <span class="n">profit_per_client</span>
 
 <span class="c1"># Rapport coût-perte</span>
-<span class="n">cost_losses_ratio</span> <span class="o">=</span> <span class="n">cost</span><span class="o">/</span><span class="n">losses</span>
+<span class="n">cost_losses_ratio</span> <span class="o">=</span> <span class="n">cost</span> <span class="o">/</span> <span class="n">losses</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Le rapport coût-perte est de </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">cost</span><span class="o">/</span><span class="n">losses</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Le rapport coût-perte est de </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">cost_losses_ratio</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 </pre></div>
 
         </div>
@@ -6501,13 +6516,15 @@ $$Probabilité &gt; Coût/Pertes$$<p>Ainsi, si la probabilité que la températu
         
         
         <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">pixel_value</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cost_losses_ratio</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pour la date et l</span><span class="se">\&#39;</span><span class="s1">heure </span><span class="si">{</span><span class="n">time</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y %H:%M:%S&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">, il est recommandé d</span><span class="se">\&#39;</span><span class="s1">avoir 2 employés.&#39;</span><span class="p">)</span>
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">prediction_index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">prediction_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pixel_value</span><span class="p">[</span><span class="n">prediction_index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cost_losses_ratio</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pour la date et l</span><span class="se">\&#39;</span><span class="s1">heure </span><span class="si">{</span><span class="n">time</span><span class="p">[</span><span class="n">prediction_index</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y %H:%M:%S&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">,&#39;</span> <span class="o">+</span>
+              <span class="sa">f</span><span class="s1">&#39; il est recommandé d</span><span class="se">\&#39;</span><span class="s1">avoir 2 employés.&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pour la date et l</span><span class="se">\&#39;</span><span class="s1">heure </span><span class="si">{</span><span class="n">time</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y %H:%M:%S&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">, il est recommandé d</span><span class="se">\&#39;</span><span class="s1">avoir un seul employé.&#39;</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pour la date et l</span><span class="se">\&#39;</span><span class="s1">heure </span><span class="si">{</span><span class="n">time</span><span class="p">[</span><span class="n">prediction_index</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y %H:%M:%S&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">,&#39;</span> <span class="o">+</span>
+              <span class="sa">f</span><span class="s1">&#39; il est recommandé d</span><span class="se">\&#39;</span><span class="s1">avoir un seul employé.&#39;</span><span class="p">)</span>
+    <span class="n">prediction_index</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
         </div>
@@ -6525,11 +6542,11 @@ $$Probabilité &gt; Coût/Pertes$$<p>Ainsi, si la probabilité que la températu
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Pour la date et l&#39;heure 05/09/2020 12:00:00, il est recommandé d&#39;avoir un seul employé.
-Pour la date et l&#39;heure 05/10/2020 00:00:00, il est recommandé d&#39;avoir un seul employé.
-Pour la date et l&#39;heure 05/10/2020 12:00:00, il est recommandé d&#39;avoir un seul employé.
-Pour la date et l&#39;heure 05/11/2020 00:00:00, il est recommandé d&#39;avoir un seul employé.
-Pour la date et l&#39;heure 05/11/2020 12:00:00, il est recommandé d&#39;avoir un seul employé.
+<pre>Pour la date et l&#39;heure 05/12/2020 12:00:00, il est recommandé d&#39;avoir un seul employé.
+Pour la date et l&#39;heure 05/13/2020 00:00:00, il est recommandé d&#39;avoir un seul employé.
+Pour la date et l&#39;heure 05/13/2020 12:00:00, il est recommandé d&#39;avoir un seul employé.
+Pour la date et l&#39;heure 05/14/2020 00:00:00, il est recommandé d&#39;avoir un seul employé.
+Pour la date et l&#39;heure 05/14/2020 12:00:00, il est recommandé d&#39;avoir un seul employé.
 </pre>
 </div>
 </div>
@@ -6541,7 +6558,7 @@ Pour la date et l&#39;heure 05/11/2020 12:00:00, il est recommandé d&#39;avoir 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Grâce à cet outil d'aide à la décision, Arthur sait maintenant combien d'employés il devrait faire travailler chaque jour afin de maximiser les profits de sa crèmerie. En changeant les paramètres de la requête et les conditions déterminant quelle décision doit être prise, il est possible d'adapter le code Python de ce tutoriel pour répondre à vos besoins.</p>
+<h2 id="conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Grâce à cet outil d'aide à la décision, Arthur sait maintenant combien d'employés il devrait faire travailler chaque jour afin de maximiser les profits de sa crèmerie. En changeant les paramètres de la requête et les conditions déterminant quelle décision doit être prise, il est possible d'adapter le code Python de cet exemple pour répondre à vos besoins.</p>
 
 </div>
 </div>
