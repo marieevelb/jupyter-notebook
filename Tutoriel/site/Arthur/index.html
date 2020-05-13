@@ -6247,7 +6247,7 @@ h6:hover .anchor-link {
 <li>Accéder aux données météorologiques de GeoMet du SMC et les interroger;</li>
 <li>Effectuer des requêtes pour obtenir les données d'une couche spécifique à un lieu précis; </li>
 <li>Effectuer des requêtes temporelles;</li>
-<li>Afficher les résultats sous forme de graphiques et de tableaux.</li>
+<li>Afficher les résultats sous forme de graphique et de tableau.</li>
 </ul>
 <h2 id="creation-dun-outil-daide-a-la-decision">Cr&#233;ation d'un outil d'aide &#224; la d&#233;cision<a class="anchor-link" href="#Cr&#233;ation-d'un-outil-d'aide-&#224;-la-d&#233;cision">&#182;</a></h2><p>Prenons la situation suivante: un propriétaire de crèmerie nommé Arthur souhaite planifier le nombre d'employés qu'il y aura chaque jour à la crèmerie à l'aide des prévisions du Service météorologique du Canada. En effet, comme les journées chaudes de l'été amènent beaucoup plus de clients que les journées plus froides, il souhaite utiliser un outil d'aide à la décision afin de déterminer quel nombre d'employés lui permettra de maximiser ses profits chaque jour. Selon ses calculs, la crèmerie accueille 300 clients en moyenne les journées où la température est de 25°C ou plus alors qu'elle en accueille seulement 150 les journées où la température est inférieure à 25°C. La crèmerie ne nécessite normalement qu'un seul employé, mais un deuxième est nécessaire pour réussir à servir l'ensemble des clients lorsqu'il y a plus de 200 clients dans une journée.</p>
 <p>Afin de déterminer le nombre d'employés à mettre à l'horaire, Arthur va comparer la probabilité que la température soit égale ou supérieure à 25°C au rapport coût-perte de faire travailler un deuxième employé. Pour ce faire, la première étape est d'effectuer une requête avec le <a href="https://eccc-msc.github.io/open-data/msc-geomet/web-services_fr/#web-map-service-wms">standard Web Map Service (WMS)</a> du Service météorologique du Canada afin d'obtenir la probabilité que la température soit de 25°C ou plus pour l'heure, la date et le lieu désiré à l'aide du langage de programmation Python. Pour réaliser cette étape, il faut tout d'abord importer les modules Python nécessaires et déterminer les paramètres de la requête comme la couche de données désirée, le lieu et le fuseau horaire local. La couche qui sera utilisée est celle du <a href="https://eccc-msc.github.io/open-data/msc-data/nwp_reps/readme_reps_fr/">Système régional de prévision d'ensemble (SRPE)</a> qui contient la probabilité en pourcentage que la température maximale soit égale ou supérieure à 25°C (<code>REPS.DIAG.24_T8.ERGE25</code>).</p>
@@ -6267,7 +6267,8 @@ h6:hover .anchor-link {
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
-<span class="c1"># Ces modules doivent avoir été préalablement installés sur votre ordinateur </span>
+<span class="c1"># Les modules suivant doivent avoir été préalablement installés sur votre ordinateur</span>
+<span class="c1"># pour utiliser le code hors de Jupyter Notebook</span>
 <span class="kn">from</span> <span class="nn">owslib.wms</span> <span class="kn">import</span> <span class="n">WebMapService</span>
 <span class="kn">import</span> <span class="nn">pandas</span>
 <span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
@@ -6342,8 +6343,8 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Le temps de départ et de fin des prévisions disponibles ainsi que l'intervalle de temps entre les prévisions peuvent être récupérés grâce à une requête <code>GetCapabilities</code>. Dans cette requête, <code>dimensions</code> fait référence à la section du même nom dans les métadonnées qui contient les informations liées au temps. Pour obtenir les informations recherchées dans la section «dimensions» des métadonnées, la méthode <code>rpartition</code> est utilisée pour récupérer ce qui est présent de part et d'autre d'un certain caractère.</p>
-<p>Par la suite, une boucle <code>while</code> va permettre de générer la date et l'heure de toutes les prévisions disponibles pour le fuseau horaire UTC±00:00 entre le temps de départ et le temps de fin des prévisions. Ces informations sont nécessaires pour réaliser la requête WMS. Une deuxième boucle <code>while</code> va permettre d'obtenir la date et l'heure locale de chaque prévision disponible. Cela va permettre d'afficher les résultats obtenus pour l'heure locale.</p>
+<p>Le temps de début et de fin des prévisions disponibles ainsi que l'intervalle de temps entre les prévisions peuvent être récupérés grâce à une requête <code>GetCapabilities</code>. Dans cette requête, <code>dimensions</code> fait référence à la section du même nom dans les métadonnées qui contient les informations liées au temps. Pour obtenir les informations recherchées dans la section «dimensions» des métadonnées, la méthode <code>rpartition</code> est utilisée pour récupérer ce qui est présent de part et d'autre d'un certain caractère.</p>
+<p>Par la suite, une boucle <code>while</code> va permettre de générer la date et l'heure de toutes les prévisions disponibles pour le fuseau horaire UTC±00:00 entre le temps de début et le temps de fin des prévisions. Ces informations sont nécessaires pour réaliser la requête WMS. Une deuxième boucle <code>while</code> va permettre d'obtenir la date et l'heure locale de chaque prévision disponible. Cela va permettre d'afficher les résultats obtenus aux heures locales pour faciliter l'interprétation des résultas.</p>
 
 </div>
 </div>
@@ -6362,7 +6363,7 @@ h6:hover .anchor-link {
 <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">dimension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%SZ&#39;</span><span class="p">)</span>
 <span class="n">end_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">dimension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%SZ&#39;</span><span class="p">)</span>
 
-<span class="c1"># Afin d&#39;utiliser une heure de départ et de fin locale spécifique, enlevez le # au début des lignes suivantes:</span>
+<span class="c1"># Afin d&#39;utiliser une heure de début et de fin locale spécifique, enlevez le # au début des lignes suivantes:</span>
 <span class="c1"># start_time = &#39;AAAA-MM-JJ HH:00:00&#39; # Les lettres en majuscule doivent être remplacées par les bonnes valeurs</span>
 <span class="c1"># end_time = &#39;AAAA-MM-JJ HH:00:00&#39; # Les lettres en majuscule doivent être remplacées par les bonnes valeurs</span>
 <span class="c1"># start_time = datetime.strptime(start_time, &#39;%Y-%m-%d %H:%M:%S&#39;) - timedelta(hours = time_zone)</span>
@@ -6593,10 +6594,10 @@ h6:hover .anchor-link {
 
 
 
-<div id="55efab82-0211-403c-99ee-edabfc6a8fdd"></div>
+<div id="abb2a0f9-8075-407c-883d-46e254edc392"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#55efab82-0211-403c-99ee-edabfc6a8fdd');
+var element = $('#abb2a0f9-8075-407c-883d-46e254edc392');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -7501,10 +7502,10 @@ $$Probabilité &gt; Coût/Pertes$$<p>Ainsi, si la probabilité que la températu
 
 
 
-<div id="bb5ba803-b3d7-448a-8a84-482f20f62fe6"></div>
+<div id="71f21107-b252-46a6-80d1-fcc1a1f4c740"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#bb5ba803-b3d7-448a-8a84-482f20f62fe6');
+var element = $('#71f21107-b252-46a6-80d1-fcc1a1f4c740');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
