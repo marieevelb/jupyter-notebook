@@ -6453,13 +6453,7 @@ h6:hover .anchor-link {
 
 <span class="c1"># Affichage du tableau</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tableau 1: Probabilité que la température soit égale ou supérieure à 25°C&#39;</span><span class="p">)</span>
-<span class="n">probability</span>
-
-<span class="c1"># Hors de Jupyter Notebook, utilisez les lignes suivantes:</span>
-
-<span class="c1"># Affichage du tableau</span>
-<span class="c1"># Enlever le # au début de la ligne suivante:</span>
-<span class="c1"># print(tabulate(probability, headers=&#39;keys&#39;, tablefmt=&quot;pretty&quot;, showindex=False))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="s1">&#39;keys&#39;</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;pretty&quot;</span><span class="p">,</span> <span class="n">showindex</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 
         </div>
@@ -6478,70 +6472,17 @@ h6:hover .anchor-link {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Tableau 1: Probabilité que la température soit égale ou supérieure à 25°C
++----------------------+--------------------------------+
+| Date et heure locale | Probabilité que t° &gt;= 25°C (%) |
++----------------------+--------------------------------+
+| 2020-05-14 08:00:00  |              0.0               |
+| 2020-05-14 20:00:00  |              0.0               |
+| 2020-05-15 08:00:00  |              0.0               |
+| 2020-05-15 20:00:00  |              0.0               |
+| 2020-05-16 08:00:00  |              0.0               |
++----------------------+--------------------------------+
 </pre>
 </div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[6]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Date et heure locale</th>
-      <th>Probabilité que t° &gt;= 25°C (%)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2020-05-14 08:00:00</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2020-05-14 20:00:00</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2020-05-15 08:00:00</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2020-05-15 20:00:00</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020-05-16 08:00:00</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
 </div>
 
 </div>
@@ -6652,10 +6593,10 @@ h6:hover .anchor-link {
 
 
 
-<div id="b926b9db-3dc7-4c08-8144-90d8e1e2a5f9"></div>
+<div id="55efab82-0211-403c-99ee-edabfc6a8fdd"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#b926b9db-3dc7-4c08-8144-90d8e1e2a5f9');
+var element = $('#55efab82-0211-403c-99ee-edabfc6a8fdd');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -7560,10 +7501,10 @@ $$Probabilité &gt; Coût/Pertes$$<p>Ainsi, si la probabilité que la températu
 
 
 
-<div id="4c9a85c4-8040-497f-a302-f41266121f3e"></div>
+<div id="bb5ba803-b3d7-448a-8a84-482f20f62fe6"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#4c9a85c4-8040-497f-a302-f41266121f3e');
+var element = $('#bb5ba803-b3d7-448a-8a84-482f20f62fe6');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -8386,13 +8327,7 @@ if (IPython.notebook.kernel != null) {
 
 <span class="c1"># Affichage du tableau</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tableau 2: Nombre d</span><span class="se">\&#39;</span><span class="s1">employés recommandés selon la température&#39;</span><span class="p">)</span>
-<span class="n">nb_employees</span>
-
-<span class="c1"># Hors de Jupyter Notebook, utilisez les lignes suivantes:</span>
-
-<span class="c1"># Affichage du tableau</span>
-<span class="c1"># Enlever le # au début de la ligne suivante:</span>
-<span class="c1"># print(tabulate(nb_employees, headers=&#39;keys&#39;, tablefmt=&quot;pretty&quot;, showindex=False))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">nb_employees</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="s1">&#39;keys&#39;</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;pretty&quot;</span><span class="p">,</span> <span class="n">showindex</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 
 <span class="c1"># Sauvegarde du tableau en format CSV</span>
 <span class="c1"># Enlever le # au début de la ligne suivante:</span>
@@ -8415,76 +8350,17 @@ if (IPython.notebook.kernel != null) {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Tableau 2: Nombre d&#39;employés recommandés selon la température
++----------------------+--------------------------------+-------------------------------+
+| Date et heure locale | Probabilité que t° &gt;= 25°C (%) | Nombre d&#39;employés recommandés |
++----------------------+--------------------------------+-------------------------------+
+| 2020-05-14 08:00:00  |              0.0               |               1               |
+| 2020-05-14 20:00:00  |              0.0               |               1               |
+| 2020-05-15 08:00:00  |              0.0               |               1               |
+| 2020-05-15 20:00:00  |              0.0               |               1               |
+| 2020-05-16 08:00:00  |              0.0               |               1               |
++----------------------+--------------------------------+-------------------------------+
 </pre>
 </div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[10]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Date et heure locale</th>
-      <th>Probabilité que t° &gt;= 25°C (%)</th>
-      <th>Nombre d'employés recommandés</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2020-05-14 08:00:00</td>
-      <td>0.0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2020-05-14 20:00:00</td>
-      <td>0.0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2020-05-15 08:00:00</td>
-      <td>0.0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2020-05-15 20:00:00</td>
-      <td>0.0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020-05-16 08:00:00</td>
-      <td>0.0</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
 </div>
 
 </div>
