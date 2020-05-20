@@ -2,7 +2,7 @@ site_name: Test cas d'utilisation
 
 nav:
 - Accueil: index.md
-- Exemple crèmerie: Arthur.ipynb
+- Exemple original: Arthur.ipynb
 - Exemple parapluie: Parapluie.ipynb
 
 plugins:
