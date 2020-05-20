@@ -2,8 +2,8 @@ site_name: Test use case
 
 nav:
 - Accueil: index.md
-- Exemple original: Arthur.ipynb
-- Exemple parapluie: Parapluie.ipynb
+- Crèmerie: Arthur.ipynb
+- Parapluie: Parapluie.ipynb
 
 plugins:
   - mkdocs-jupyter
