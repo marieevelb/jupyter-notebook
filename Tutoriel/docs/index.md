@@ -1,1 +1,1 @@
-# Cliquez sur Tutoriel dans la barre de navigation pour voir le tutoriel
+# Cliquez sur Parapluie dans la barre de navigation pour voir le cas d'utilisation

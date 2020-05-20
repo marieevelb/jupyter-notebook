@@ -1,8 +1,9 @@
-site_name: Test tutoriel
+site_name: Test cas d'utilisation
 
 nav:
-- Tutoriel: Arthur.ipynb
 - Accueil: index.md
+- Exemple crèmerie: Arthur.ipynb
+- Exemple parapluie: Parapluie.ipynb
 
 plugins:
   - mkdocs-jupyter
