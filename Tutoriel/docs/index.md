@@ -1,1 +1,1 @@
-# Cliquez sur Parapluie dans la barre de navigation pour voir le cas d'utilisation
+# Cliquez sur Cas d'utilisation ou Use Case dans la barre de navigation pour voir le cas d'utilisation
